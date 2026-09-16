@@ -44,7 +44,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p .build
-          gh release download v0.1.3 --repo genropy/gramlot --pattern gramlot-0.1.3-py3-none-any.whl --dir .build
+          gh release download v0.1.3 --repo gramlot-org/gramlot-poc --pattern gramlot-0.1.3-py3-none-any.whl --dir .build
           echo '893b9a75a10437f239739b70f635a602dac24864e68b0c1de4deea2cc80dfae2  .build/gramlot-0.1.3-py3-none-any.whl' | sha256sum -c -
       - run: docker build --platform linux/amd64 --build-arg GRAMLOT_WHEEL_SHA256=893b9a75a10437f239739b70f635a602dac24864e68b0c1de4deea2cc80dfae2 -t gramlot-rosetta:verified .
       - run: |
